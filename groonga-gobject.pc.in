@@ -1,0 +1,12 @@
+prefix=@prefix@
+exec_prefix=@exec_prefix@
+libdir=@libdir@
+includedir=@includedir@
+pkgincludedir=${includedir}/@PACKAGE_NAME@
+
+Name: Groonga GObject
+Description: GObject wrapper of Groonga
+Version: @VERSION@
+Requires: gobject-2.0 >= @GLIB_REQUIRED@, groonga
+Cflags: -I${pkgincludedir}
+Libs: -L${libdir} -lgroonga-gobject

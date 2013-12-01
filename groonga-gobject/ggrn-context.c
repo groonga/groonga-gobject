@@ -26,9 +26,10 @@
 
 /**
 * SECTION: ggrn-context
-* @short_description: A greeter.
+* @short_description: A context for operating a database.
 *
-* The #GGrnContext is a class to keep display friendly greetings.
+* The #GGrnContext is a class to keep all information about database
+* operations.
 */
 G_DEFINE_TYPE(GGrnContext, ggrn_context, G_TYPE_OBJECT)
 

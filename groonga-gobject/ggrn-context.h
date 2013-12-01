@@ -39,9 +39,15 @@ G_BEGIN_DECLS
 typedef struct _GGrnContext         GGrnContext;
 typedef struct _GGrnContextClass    GGrnContextClass;
 
+/**
+ * GGrnContext:
+ *
+ * A GGrnContext is the operation context for a database.
+ */
 struct _GGrnContext
 {
-    GObject object;
+    /*< private >*/
+    GObject parent_instance;
 };
 
 struct _GGrnContextClass

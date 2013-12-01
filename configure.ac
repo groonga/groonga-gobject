@@ -95,6 +95,9 @@ AC_CONFIG_FILES([
   groonga-gobject.pc
   Makefile
   groonga-gobject/Makefile
+  doc/Makefile
+  doc/reference/Makefile
+  doc/reference/version.xml
 ])
 
 AC_OUTPUT

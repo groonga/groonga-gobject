@@ -19,4 +19,5 @@ DISTCHECK_CONFIGURE_FLAGS =			\
 	--enable-introspection
 
 SUBDIRS =					\
-	groonga-gobject
+	groonga-gobject				\
+	doc

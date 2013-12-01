@@ -1,5 +1,3 @@
-#!/bin/sh
-#
 # Copyright (C) 2013  Kouhei Sutou <kou@clear-code.com>
 #
 # This library is free software: you can redistribute it and/or modify
@@ -15,8 +13,5 @@
 # You should have received a copy of the GNU Lesser General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-set -u
-set -e
-
-gtkdocize --copy --docdir doc/reference
-autoreconf --install
+SUBDIRS =					\
+	reference

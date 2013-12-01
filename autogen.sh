@@ -18,4 +18,4 @@
 set -u
 set -e
 
-autoreconf -i
+autoreconf --install

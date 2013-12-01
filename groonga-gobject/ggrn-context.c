@@ -67,6 +67,12 @@ dispose(GObject *object)
     GGrnContextPrivate *priv = GGRN_CONTEXT_GET_PRIVATE(object);
 
     if (priv->ctx) {
+        grn_obj *using_database;
+
+        using_database = grn_ctx_db(priv->ctx);
+        if (using_database) {
+            grn_db_close(priv->ctx, using_database);
+        }
         grn_ctx_close(priv->ctx);
         priv->ctx = NULL;
     }

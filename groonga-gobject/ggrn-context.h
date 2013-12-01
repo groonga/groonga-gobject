@@ -57,6 +57,9 @@ struct _GGrnContextClass
 
 GType                ggrn_context_get_type          (void) G_GNUC_CONST;
 GGrnContext         *ggrn_context_new               (void);
+gboolean             ggrn_context_open_database     (GGrnContext  *context,
+                                                     const gchar  *path,
+                                                     GError      **error);
 
 G_END_DECLS
 

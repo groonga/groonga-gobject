@@ -23,6 +23,7 @@
 #include <groonga.h>
 
 #include "ggrn-context.h"
+#include "ggrn-internal.h"
 
 /**
 * SECTION: ggrn-context
@@ -95,4 +96,32 @@ ggrn_context_new(void)
     GGrnContext *context;
     context = g_object_new(GGRN_TYPE_CONTEXT, NULL);
     return context;
+}
+
+/**
+ * ggrn_context_open_database:
+ * @context: A #GGrnContext.
+ * @path: The path of the database to be opened.
+ * @error: return location for a GError, or %NULL.
+ *
+ * Opens a database.
+ *
+ * Returns: TRUE on success, FALSE if an error occurred.
+ */
+gboolean
+ggrn_context_open_database(GGrnContext *context,
+                           const gchar *path, GError **error)
+{
+    GGrnContextPrivate *priv = GGRN_CONTEXT_GET_PRIVATE(context);
+    grn_obj *opened_database, *database;
+    gboolean succeeded;
+
+    opened_database = grn_ctx_db(priv->ctx);
+
+    database = grn_db_open(priv->ctx, path);
+    succeeded = _ggrn_rc_check(priv->ctx->rc, error);
+    if (succeeded && opened_database) {
+        grn_db_close(priv->ctx, opened_database);
+    }
+    return succeeded;
 }

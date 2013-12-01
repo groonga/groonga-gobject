@@ -39,7 +39,11 @@ libgroonga_gobject_la_SOURCES =			\
 	ggrn.c					\
 	ggrn.h					\
 	ggrn-context.c				\
-	ggrn-context.h
+	ggrn-context.h				\
+	ggrn-error.c				\
+	ggrn-error.h				\
+	ggrn-internal.c				\
+	ggrn-internal.h
 
 -include $(INTROSPECTION_MAKEFILE)
 INTROSPECTION_GIRS =

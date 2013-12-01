@@ -83,12 +83,12 @@ ggrn_context_class_init(GGrnContextClass *klass)
 }
 
 /**
-* ggrn_context_new:
-*
-* Allocates a new #GGrnContext.
-*
-* Returns: a new #GGrnContext.
-*/
+ * ggrn_context_new:
+ *
+ * Allocates a new #GGrnContext.
+ *
+ * Returns: a new #GGrnContext.
+ */
 GGrnContext *
 ggrn_context_new(void)
 {

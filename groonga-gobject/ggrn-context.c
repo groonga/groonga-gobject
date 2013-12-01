@@ -113,15 +113,13 @@ ggrn_context_open_database(GGrnContext *context,
                            const gchar *path, GError **error)
 {
     GGrnContextPrivate *priv = GGRN_CONTEXT_GET_PRIVATE(context);
-    grn_obj *opened_database, *database;
-    gboolean succeeded;
+    grn_obj *using_database;
 
-    opened_database = grn_ctx_db(priv->ctx);
-
-    database = grn_db_open(priv->ctx, path);
-    succeeded = _ggrn_rc_check(priv->ctx->rc, error);
-    if (succeeded && opened_database) {
-        grn_db_close(priv->ctx, opened_database);
+    using_database = grn_ctx_db(priv->ctx);
+    if (using_database) {
+        grn_db_close(priv->ctx, using_database);
     }
-    return succeeded;
+
+    grn_db_open(priv->ctx, path);
+    return _ggrn_rc_check(priv->ctx->rc, error);
 }

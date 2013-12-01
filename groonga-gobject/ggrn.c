@@ -20,8 +20,9 @@
 #  include <config.h>
 #endif
 
-#include "ggrn.h"
 #include <groonga.h>
+
+#include "ggrn.h"
 
 /**
  * ggrn_init:

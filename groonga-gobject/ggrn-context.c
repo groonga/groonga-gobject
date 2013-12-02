@@ -165,16 +165,15 @@ ggrn_context_create_database(GGrnContext *context,
  * @command:
  *   The Groonga command to be executed. See
  *   http://groonga.org/docs/reference/command.html about Groonga command.
- * @result: (out) (allow-none):
- *   The return location for the executed result of @command.
- *   It must be freed with g_free() when no longer needed.
  *
  * Executes a Groonga command and returns the executed result.
+ *
+ * Returns: The executed result of @command. It must be freed with
+ *   g_free() when no longer needed.
  */
-void
+gchar *
 ggrn_context_execute_command(GGrnContext *context,
-                             const gchar *command,
-                             gchar **result)
+                             const gchar *command)
 {
     GGrnContextPrivate *priv = GGRN_CONTEXT_GET_PRIVATE(context);
     gsize command_length;
@@ -187,7 +186,5 @@ ggrn_context_execute_command(GGrnContext *context,
     grn_ctx_send(priv->ctx, command, command_length, flags);
     grn_ctx_recv(priv->ctx,
                  &received_result, &received_result_length, &received_flags);
-    if (result) {
-        *result = g_strndup(received_result, received_result_length);
-    }
+    return g_strndup(received_result, received_result_length);
 }

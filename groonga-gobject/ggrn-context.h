@@ -62,9 +62,7 @@ gboolean             ggrn_context_open_database     (GGrnContext  *context,
                                                      GError      **error);
 void                 ggrn_context_execute_command   (GGrnContext  *context,
                                                      const gchar  *command,
-                                                     gssize        command_length,
-                                                     gchar       **result,
-                                                     gsize        *result_length);
+                                                     gchar       **result);
 
 G_END_DECLS
 

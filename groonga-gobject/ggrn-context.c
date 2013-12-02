@@ -135,40 +135,32 @@ ggrn_context_open_database(GGrnContext *context,
 /**
  * ggrn_context_execute_command:
  * @context: A #GGrnContext.
- * @command: (array length=command_length) (element-type gchar):
+ * @command:
  *   The Groonga command to be executed. See
  *   http://groonga.org/docs/reference/command.html about Groonga command.
- * @command_length: The length of @command, or -1 if @command is a
- *   NULL-terminated string.
- * @result: (out) (allow-none) (array length=result_length) (element-type gint8):
+ * @result: (out) (allow-none):
  *   The return location for the executed result of @command.
  *   It must be freed with g_free() when no longer needed.
- * @result_length: (out) (allow-none):
- *   The return location for the length of @result.
  *
  * Executes a Groonga command and returns the executed result.
  */
 void
 ggrn_context_execute_command(GGrnContext *context,
-                             const gchar *command, gssize command_length,
-                             gchar **result, gsize *result_length)
+                             const gchar *command,
+                             gchar **result)
 {
     GGrnContextPrivate *priv = GGRN_CONTEXT_GET_PRIVATE(context);
+    gsize command_length;
     gint flags = 0;
     gchar *received_result;
     guint received_result_length;
     gint received_flags;
 
-    if (command_length == -1) {
-        command_length = strlen(command);
-    }
+    command_length = strlen(command);
     grn_ctx_send(priv->ctx, command, command_length, flags);
     grn_ctx_recv(priv->ctx,
                  &received_result, &received_result_length, &received_flags);
     if (result) {
         *result = g_strndup(received_result, received_result_length);
-    }
-    if (result_length) {
-        *result_length = received_result_length;
     }
 }

@@ -60,6 +60,9 @@ GGrnContext         *ggrn_context_new               (void);
 gboolean             ggrn_context_open_database     (GGrnContext  *context,
                                                      const gchar  *path,
                                                      GError      **error);
+gboolean             ggrn_context_create_database   (GGrnContext  *context,
+                                                     const gchar  *path,
+                                                     GError      **error);
 void                 ggrn_context_execute_command   (GGrnContext  *context,
                                                      const gchar  *command,
                                                      gchar       **result);

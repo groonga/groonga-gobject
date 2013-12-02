@@ -133,6 +133,33 @@ ggrn_context_open_database(GGrnContext *context,
 }
 
 /**
+ * ggrn_context_create_database:
+ * @context: A #GGrnContext.
+ * @path: (allow-none): The path of the database to be created, or %NULL
+ *   for temporary database.
+ * @error: return location for a GError, or %NULL.
+ *
+ * Creates a new database.
+ *
+ * Returns: TRUE on success, FALSE if an error occurred.
+ */
+gboolean
+ggrn_context_create_database(GGrnContext *context,
+                             const gchar *path, GError **error)
+{
+    GGrnContextPrivate *priv = GGRN_CONTEXT_GET_PRIVATE(context);
+    grn_obj *using_database;
+
+    using_database = grn_ctx_db(priv->ctx);
+    if (using_database) {
+        grn_db_close(priv->ctx, using_database);
+    }
+
+    grn_db_create(priv->ctx, path, NULL);
+    return _ggrn_rc_check(priv->ctx->rc, error);
+}
+
+/**
  * ggrn_context_execute_command:
  * @context: A #GGrnContext.
  * @command:

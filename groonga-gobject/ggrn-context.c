@@ -44,7 +44,7 @@ G_DEFINE_TYPE(GGrnContext, ggrn_context, G_TYPE_OBJECT)
 typedef struct _GGrnContextPrivate	GGrnContextPrivate;
 struct _GGrnContextPrivate
 {
-  grn_ctx *ctx;
+    grn_ctx *ctx;
 };
 
 enum

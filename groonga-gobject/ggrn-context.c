@@ -45,6 +45,7 @@ typedef struct _GGrnContextPrivate	GGrnContextPrivate;
 struct _GGrnContextPrivate
 {
     grn_ctx *ctx;
+    gboolean own_database;
 };
 
 enum
@@ -61,6 +62,23 @@ ggrn_context_init(GGrnContext *object)
     GGrnContextPrivate *priv = GGRN_CONTEXT_GET_PRIVATE(object);
 
     priv->ctx = grn_ctx_open(0);
+    priv->own_database = FALSE;
+}
+
+static void
+dispose_database(GGrnContextPrivate *priv)
+{
+    grn_obj *using_database;
+
+    if (!priv->own_database) {
+        return;
+    }
+
+    using_database = grn_ctx_db(priv->ctx);
+    if (using_database) {
+        grn_obj_unlink(priv->ctx, using_database);
+    }
+    priv->own_database = FALSE;
 }
 
 static void
@@ -69,12 +87,7 @@ dispose(GObject *object)
     GGrnContextPrivate *priv = GGRN_CONTEXT_GET_PRIVATE(object);
 
     if (priv->ctx) {
-        grn_obj *using_database;
-
-        using_database = grn_ctx_db(priv->ctx);
-        if (using_database) {
-            grn_db_close(priv->ctx, using_database);
-        }
+        dispose_database(priv);
         grn_ctx_close(priv->ctx);
         priv->ctx = NULL;
     }
@@ -121,12 +134,8 @@ ggrn_context_open_database(GGrnContext *context,
                            const gchar *path, GError **error)
 {
     GGrnContextPrivate *priv = GGRN_CONTEXT_GET_PRIVATE(context);
-    grn_obj *using_database;
 
-    using_database = grn_ctx_db(priv->ctx);
-    if (using_database) {
-        grn_db_close(priv->ctx, using_database);
-    }
+    dispose_database(priv);
 
     grn_db_open(priv->ctx, path);
     return _ggrn_rc_check(priv->ctx->rc, error);
@@ -148,12 +157,8 @@ ggrn_context_create_database(GGrnContext *context,
                              const gchar *path, GError **error)
 {
     GGrnContextPrivate *priv = GGRN_CONTEXT_GET_PRIVATE(context);
-    grn_obj *using_database;
 
-    using_database = grn_ctx_db(priv->ctx);
-    if (using_database) {
-        grn_db_close(priv->ctx, using_database);
-    }
+    dispose_database(priv);
 
     grn_db_create(priv->ctx, path, NULL);
     return _ggrn_rc_check(priv->ctx->rc, error);

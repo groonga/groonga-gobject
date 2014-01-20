@@ -1,5 +1,5 @@
 REPOSITORIES_PATH = repositories
-DISTRIBUTIONS = fedora centos
+DISTRIBUTIONS = fedora
 ARCHITECTURES = i386 x86_64
 CHROOT_BASE = /var/lib/chroot
 BASE_URL_PREFIX = http://packages.groonga.org

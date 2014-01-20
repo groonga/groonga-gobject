@@ -102,8 +102,6 @@ AC_CONFIG_FILES([
   packages/apt/Makefile
   packages/yum/Makefile
   packages/rpm/Makefile
-  packages/rpm/centos/Makefile
-  packages/rpm/centos/groonga-gobject.spec
   packages/rpm/fedora/Makefile
   packages/rpm/fedora/groonga-gobject.spec
   packages/source/Makefile

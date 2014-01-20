@@ -101,8 +101,10 @@ AC_CONFIG_FILES([
   packages/Makefile
   packages/apt/Makefile
   packages/yum/Makefile
+  packages/rpm/Makefile
   packages/rpm/centos/Makefile
   packages/rpm/fedora/Makefile
+  packages/source/Makefile
 ])
 
 AC_OUTPUT

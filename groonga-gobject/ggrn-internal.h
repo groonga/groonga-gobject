@@ -1,6 +1,6 @@
 /* -*- Mode: C; indent-tabs-mode: nil; c-basic-offset: 4 -*- */
 /*
- * Copyright (C) 2013  Kouhei Sutou <kou@clear-code.com>
+ * Copyright (C) 2013-2014  Kouhei Sutou <kou@clear-code.com>
  *
  * This library is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by
@@ -24,7 +24,7 @@
 
 G_BEGIN_DECLS
 
-G_GNUC_INTERNAL gboolean _ggrn_rc_check (grn_rc, GError **error);
+G_GNUC_INTERNAL gboolean _ggrn_rc_check (grn_rc rc, GError **error);
 
 G_END_DECLS
 

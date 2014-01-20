@@ -20,7 +20,8 @@ DISTCHECK_CONFIGURE_FLAGS =			\
 
 SUBDIRS =					\
 	groonga-gobject				\
-	doc
+	doc					\
+	packages
 
 pkgconfigdir = $(libdir)/pkgconfig
 pkgconfig_DATA = groonga-gobject.pc

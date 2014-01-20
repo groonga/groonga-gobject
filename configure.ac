@@ -98,6 +98,11 @@ AC_CONFIG_FILES([
   doc/Makefile
   doc/reference/Makefile
   doc/reference/version.xml
+  packages/Makefile
+  packages/apt/Makefile
+  packages/yum/Makefile
+  packages/rpm/centos/Makefile
+  packages/rpm/fedora/Makefile
 ])
 
 AC_OUTPUT

@@ -8,26 +8,40 @@ Build-Depends:
 Standards-Version: 3.9.3
 Homepage: https://github.com/groonga/groonga-gobject
 
-Package: groonga-gobject
+Package: gir1.2-groonga
 Section: libs
 Architecture: any
 Depends:
   ${misc:Depends},
   ${shlibs:Depends},
   libgroonga-dev (>= 3.1.0)
-Description: GObject introspection typelib data for Groonga
+Description: GObject introspection typelib file for Groonga
  Groonga is an open-source fulltext search engine and column store.
  It lets you write high-performance applications that requires fulltext search.
  .
 
-Package: groonga-gobject-dev
+Package: libgroonga-gobject
 Section: libs
+Architecture: any
+Pre-Depends: ${misc:Pre-Depends}
+Depends:
+  ${misc:Depends},
+  ${shlibs:Depends},
+  libgroonga-dev (>= 3.1.0)
+Description: GObject introspection runtime library for Groonga
+ Groonga is an open-source fulltext search engine and column store.
+ It lets you write high-performance applications that requires fulltext search.
+ .
+
+Package: libgroonga-gobject-dev
+Section: libdevel
 Architecture: any
 Depends:
   ${misc:Depends},
   ${shlibs:Depends},
   libgroonga-dev (>= 3.1.0)
-Description: GObject introspection development files for Groonga
+Description: GObject introspection development file for Groonga
  Groonga is an open-source fulltext search engine and column store.
  It lets you write high-performance applications that requires fulltext search.
  .
+

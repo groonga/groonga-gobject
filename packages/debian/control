@@ -15,7 +15,19 @@ Depends:
   ${misc:Depends},
   ${shlibs:Depends},
   libgroonga-dev (>= 3.1.0)
-Description: GObject wrapper of Groonga
+Description: GObject introspection typelib data for Groonga
+ Groonga is an open-source fulltext search engine and column store.
+ It lets you write high-performance applications that requires fulltext search.
+ .
+
+Package: groonga-gobject-dev
+Section: libs
+Architecture: any
+Depends:
+  ${misc:Depends},
+  ${shlibs:Depends},
+  libgroonga-dev (>= 3.1.0)
+Description: GObject introspection development files for Groonga
  Groonga is an open-source fulltext search engine and column store.
  It lets you write high-performance applications that requires fulltext search.
  .

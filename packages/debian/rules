@@ -13,3 +13,5 @@ export DH_OPTIONS
 override_dh_auto_test:
 
 override_dh_install:
+	find $(CURDIR)/debian/tmp/usr/lib/$(DEB_HOST_MULTIARCH)/ -name *.la -delete
+	dh_install

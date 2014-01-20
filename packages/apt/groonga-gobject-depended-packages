@@ -1,0 +1,7 @@
+debhelper
+autotools-dev
+pkg-config
+libgroonga-dev
+gtk-doc-tools
+gobject-introspection
+libgirepository1.0-dev

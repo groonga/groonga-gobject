@@ -1,0 +1,9 @@
+Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: Groonga Project
+Upstream-Contact: Groonga Project <packages@groonga.org>
+Source: http://packages.groonga.org/source/groonga-gobject/
+
+Files: *
+Copyright: Copyright 2013 Kouhei Sutou <kou@clear-code.com>
+License: LGPL-3.0
+ See /usr/share/common-licenses/LGPL-3 for the full license text.

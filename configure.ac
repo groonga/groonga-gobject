@@ -89,7 +89,7 @@ AM_PATH_GLIB_2_0([${GLIB_REQUIRED}], [], [], [gobject])
 GLIB_VERSION="${glib_config_major_version}.${glib_config_minor_version}.${glib_config_micro_version}"
 
 GOBJECT_INTROSPECTION_REQUIRE([1.32.1])
-GTK_DOC_CHECK([1.18-2])
+GTK_DOC_CHECK([1.18])
 
 AC_CONFIG_FILES([
   groonga-gobject.pc

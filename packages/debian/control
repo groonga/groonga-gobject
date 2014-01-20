@@ -20,7 +20,7 @@ Description: GObject introspection typelib file for Groonga
  It lets you write high-performance applications that requires fulltext search.
  .
 
-Package: libgroonga-gobject
+Package: libgroonga-gobject0
 Section: libs
 Architecture: any
 Pre-Depends: ${misc:Pre-Depends}

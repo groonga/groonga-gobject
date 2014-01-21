@@ -41,26 +41,24 @@ GObject Introspection document for groonga-gobject
 %build
 %configure \
   --disable-static
-sed -i 's|^hardcode_libdir_flag_spec=.*|hardcode_libdir_flag_spec=""|g' libtool
-sed -i 's|^runpath_var=LD_RUN_PATH|runpath_var=DIE_RPATH_DIE|g' libtool
 make %{?_smp_mflags}
 
 %install
 make install DESTDIR=$RPM_BUILD_ROOT INSTALL="install -p"
-rm $RPM_BUILD_ROOT%{_libdir}/groonga/plugins/*/*.la
+rm $RPM_BUILD_ROOT%{_libdir}/*.la
 
 %files
-%dir %{_libdir}/groonga
-%dir %{_libdir}/groonga/plugins
-%dir %{_libdir}/groonga/plugins/normalizers
-%{_libdir}/groonga/plugins/normalizers/mysql.so
-%{_datadir}/doc/groonga-normalizer-mysql/
+%{_libdir}/girepository-1.0/*.typelib
+%{_libdir}/libgroonga-gobject.so.*
 
 %files devel
-%{_libdir}/pkgconfig/groonga-normalizer-mysql.pc
+%{_libdir}/pkgconfig/groonga-gobject.pc
+%{_libdir}/libgroonga-gobject.so
+%{_datadir}/gir-1.0/*.gir
 
 %files doc
-%doc README AUTHORS COPYING
+%dir %{_datadir}/gtk-doc/html/groonga-gobject
+%{_datadir}/gtk-doc/html/groonga-gobject/*
 
 %changelog
 * Wed Jan 29 2014 HAYASHI Kentaro <hayashi@clear-code.com> - 1.0.0-1

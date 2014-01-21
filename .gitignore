@@ -38,3 +38,4 @@ Makefile
 /doc/reference/groonga-gobject.prerequisites
 /doc/reference/groonga-gobject.signals
 /doc/reference/groonga-gobject.types
+/packages/rpm/fedora/*.spec

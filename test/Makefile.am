@@ -32,10 +32,13 @@ LIBS =								\
 
 if WITH_CUTTER
 noinst_LTLIBRARIES =				\
-	suite-groonga-gobject-test.la
+	suite-groonga-gobject-test.la		\
+	test-command.la
 endif
 
 suite_groonga_gobject_test_la_SOURCES = suite-groonga-gobject-test.c
+
+test_command_la_SOURCES = test-command.c
 
 echo-abs-top-builddir:
 	@echo $(abs_top_builddir)

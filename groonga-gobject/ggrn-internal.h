@@ -22,9 +22,13 @@
 #include <glib.h>
 #include <groonga.h>
 
+#include "ggrn-context.h"
+
 G_BEGIN_DECLS
 
 G_GNUC_INTERNAL gboolean _ggrn_rc_check (grn_rc rc, GError **error);
+
+G_GNUC_INTERNAL grn_ctx *_ggrn_context_get_ctx (GGrnContext *context);
 
 G_END_DECLS
 

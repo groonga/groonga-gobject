@@ -1,6 +1,6 @@
 /* -*- Mode: C; indent-tabs-mode: nil; c-basic-offset: 4 -*- */
 /*
- * Copyright (C) 2013  Kouhei Sutou <kou@clear-code.com>
+ * Copyright (C) 2013-2014  Kouhei Sutou <kou@clear-code.com>
  *
  * This library is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by
@@ -117,6 +117,13 @@ ggrn_context_new(void)
     GGrnContext *context;
     context = g_object_new(GGRN_TYPE_CONTEXT, NULL);
     return context;
+}
+
+grn_ctx *
+_ggrn_context_get_ctx(GGrnContext *context)
+{
+    GGrnContextPrivate *priv = GGRN_CONTEXT_GET_PRIVATE(context);
+    return priv->ctx;
 }
 
 /**

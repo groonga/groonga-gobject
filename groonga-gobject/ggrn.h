@@ -19,9 +19,8 @@
 #ifndef GGRN_H
 #define GGRN_H
 
-#include <glib.h>
-
 #include <groonga-gobject/ggrn-context.h>
+#include <groonga-gobject/ggrn-command.h>
 
 G_BEGIN_DECLS
 

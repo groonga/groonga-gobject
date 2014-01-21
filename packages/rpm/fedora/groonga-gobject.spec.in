@@ -1,5 +1,3 @@
-%global __provides_exclude_from ^%{_libdir}/groonga/plugins/normalizers/mysql\\.so$
-
 Name:		groonga-gobject
 Version:	@VERSION@
 Release:	1%{?dist}

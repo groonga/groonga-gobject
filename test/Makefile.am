@@ -1,4 +1,4 @@
-# Copyright (C) 2013  Kouhei Sutou <kou@clear-code.com>
+# Copyright (C) 2014  Kouhei Sutou <kou@clear-code.com>
 #
 # This library is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Lesser General Public License as published by
@@ -13,19 +13,29 @@
 # You should have received a copy of the GNU Lesser General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-ACLOCAL_AMFLAGS = -I m4 ${ACLOCAL_FLAGS}
+AM_CPPFLAGS =					\
+	-I$(top_builddir)			\
+	-I$(top_srcdir)
 
-DISTCHECK_CONFIGURE_FLAGS =			\
-	--enable-introspection
+AM_CFLAGS =					\
+	$(GCUTTER_CFLAGS)
 
-SUBDIRS =					\
-	groonga-gobject				\
-	test					\
-	doc					\
-	packages
+AM_LDFLAGS =					\
+	-module					\
+	-rpath "`pwd`/.libs"			\
+	-avoid-version				\
+	-no-undefined
 
-pkgconfigdir = $(libdir)/pkgconfig
-pkgconfig_DATA = groonga-gobject.pc
+LIBS =								\
+	$(top_builddir)/groonga-gobject/libgroonga-gobject.la	\
+	$(GCUTTER_LIBS)
 
-echo-cutter:
-	@echo $(CUTTER)
+if WITH_CUTTER
+noinst_LTLIBRARIES =				\
+	suite-groonga-gobject-test.la
+endif
+
+suite_groonga_gobject_test_la_SOURCES = suite-groonga-gobject-test.c
+
+echo-abs-top-builddir:
+	@echo $(abs_top_builddir)

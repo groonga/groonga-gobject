@@ -91,10 +91,22 @@ GLIB_VERSION="${glib_config_major_version}.${glib_config_minor_version}.${glib_c
 GOBJECT_INTROSPECTION_REQUIRE([1.32.1])
 GTK_DOC_CHECK([1.18])
 
+m4_ifdef([AC_CHECK_GCUTTER],
+         [AC_CHECK_GCUTTER(>= 1.1.6)],
+         [cutter_use_cutter="no"])
+AM_CONDITIONAL([WITH_CUTTER], [test "$cutter_use_cutter" = "yes"])
+if test "$cutter_use_cutter" = "yes"; then
+  AC_DEFINE(WITH_CUTTER, 1, [Define to 1 if you use Cutter])
+fi
+
+m4_ifdef([AC_CHECK_COVERAGE], [AC_CHECK_COVERAGE])
+GENHTML_OPTIONS="--title 'Groonga GObject Code Coverage'"
+
 AC_CONFIG_FILES([
   groonga-gobject.pc
   Makefile
   groonga-gobject/Makefile
+  test/Makefile
   doc/Makefile
   doc/reference/Makefile
   doc/reference/version.xml
@@ -115,3 +127,6 @@ echo
 echo "  GLib                    : $GLIB_VERSION"
 echo
 echo "  GTK-Doc                 : $enable_gtk_doc"
+echo
+echo "  Cutter                  : $CUTTER"
+echo "  LCOV                    : $LCOV"

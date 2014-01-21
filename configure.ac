@@ -1,4 +1,4 @@
-# Copyright (C) 2013  Kouhei Sutou <kou@clear-code.com>
+# Copyright (C) 2013-2014  Kouhei Sutou <kou@clear-code.com>
 #
 # This library is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Lesser General Public License as published by
@@ -113,3 +113,5 @@ echo
 echo "Configure Result:"
 echo
 echo "  GLib                    : $GLIB_VERSION"
+echo
+echo "  GTK-Doc                 : $enable_gtk_doc"

@@ -157,7 +157,7 @@ ggrn_context_open_database(GGrnContext *context,
  *
  * Creates a new database.
  *
- * Returns: TRUE on success, FALSE if an error occurred.
+ * Returns: TRUE on success, FALSE if an error is occurred.
  */
 gboolean
 ggrn_context_create_database(GGrnContext *context,

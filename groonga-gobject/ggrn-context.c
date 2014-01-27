@@ -200,3 +200,55 @@ ggrn_context_execute_command(GGrnContext *context,
                  &received_result, &received_result_length, &received_flags);
     return g_strndup(received_result, received_result_length);
 }
+
+/**
+ * ggrn_context_send_command:
+ * @context: A #GGrnContext.
+ * @command:
+ *   The Groonga command to be sent. See
+ *   http://groonga.org/docs/reference/command.html about Groonga command.
+ *
+ * Sends a Groonga command. Use ggrn_context_receive_result() to
+ * receive the result of the sent command.
+ *
+ * Normally, you should use high-level API
+ * ggrn_context_execute_command(). If you want to get error details of
+ * the executed command, use this API.
+ *
+ * Returns: TRUE on success, FALSE if an error is occurred.
+ */
+gboolean
+ggrn_context_send_command(GGrnContext  *context,
+                          const gchar  *command,
+                          GError      **error)
+{
+    GGrnContextPrivate *priv = GGRN_CONTEXT_GET_PRIVATE(context);
+    gsize command_length;
+    gint flags = 0;
+
+    command_length = strlen(command);
+    grn_ctx_send(priv->ctx, command, command_length, flags);
+    return _ggrn_rc_check(priv->ctx->rc, error);
+}
+
+/**
+ * ggrn_context_receive_result:
+ * @context: A #GGrnContext.
+ *
+ * Receives the result of the sent command by ggrn_context_send_command().
+ *
+ * Returns: The result of the sent command. It must be freed with
+ *   g_free() when no longer needed.
+ */
+gchar *
+ggrn_context_receive_result(GGrnContext *context)
+{
+    GGrnContextPrivate *priv = GGRN_CONTEXT_GET_PRIVATE(context);
+    gchar *received_result;
+    guint received_result_length;
+    gint received_flags;
+
+    grn_ctx_recv(priv->ctx,
+                 &received_result, &received_result_length, &received_flags);
+    return g_strndup(received_result, received_result_length);
+}

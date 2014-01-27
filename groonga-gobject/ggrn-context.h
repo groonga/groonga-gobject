@@ -65,6 +65,11 @@ gboolean             ggrn_context_create_database   (GGrnContext  *context,
                                                      GError      **error);
 gchar               *ggrn_context_execute_command   (GGrnContext  *context,
                                                      const gchar  *command);
+gboolean             ggrn_context_send_command      (GGrnContext  *context,
+                                                     const gchar  *command,
+                                                     GError      **error);
+gchar               *ggrn_context_receive_result    (GGrnContext  *context);
+
 
 G_END_DECLS
 

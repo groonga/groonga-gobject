@@ -28,11 +28,11 @@
 #include "ggrn-internal.h"
 
 /**
-* SECTION: ggrn-command
-* @short_description: An object to create a Groonga command.
-*
-* The #GGrnCommand is a class to create a Groonga command string.
-*/
+ * SECTION: ggrn-command
+ * @short_description: An object to create a Groonga command.
+ *
+ * The #GGrnCommand is a class to create a Groonga command string.
+ */
 G_DEFINE_TYPE(GGrnCommand, ggrn_command, G_TYPE_OBJECT)
 
 #define GGRN_COMMAND_GET_PRIVATE(obj)                          \

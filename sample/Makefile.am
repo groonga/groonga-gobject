@@ -1,4 +1,4 @@
-# Copyright (C) 2013  Kouhei Sutou <kou@clear-code.com>
+# Copyright (C) 2014  Kouhei Sutou <kou@clear-code.com>
 #
 # This library is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Lesser General Public License as published by
@@ -13,20 +13,6 @@
 # You should have received a copy of the GNU Lesser General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-ACLOCAL_AMFLAGS = -I m4 ${ACLOCAL_FLAGS}
-
-DISTCHECK_CONFIGURE_FLAGS =			\
-	--enable-introspection
-
-SUBDIRS =					\
-	groonga-gobject				\
-	test					\
-	doc					\
-	sample					\
-	packages
-
-pkgconfigdir = $(libdir)/pkgconfig
-pkgconfig_DATA = groonga-gobject.pc
-
-echo-cutter:
-	@echo $(CUTTER)
+sampledir = $(pkgdatadir)/sample
+sample_DATA =					\
+	groonga.py

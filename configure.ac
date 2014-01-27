@@ -110,6 +110,7 @@ AC_CONFIG_FILES([
   doc/Makefile
   doc/reference/Makefile
   doc/reference/version.xml
+  sample/Makefile
   packages/Makefile
   packages/apt/Makefile
   packages/yum/Makefile

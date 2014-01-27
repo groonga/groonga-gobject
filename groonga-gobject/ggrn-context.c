@@ -142,6 +142,8 @@ _ggrn_context_check(GGrnContext *context, GError **error)
  * Opens a database.
  *
  * Returns: TRUE on success, FALSE if an error occurred.
+ *
+ * Since: 1.0.0
  */
 gboolean
 ggrn_context_open_database(GGrnContext *context,
@@ -165,6 +167,8 @@ ggrn_context_open_database(GGrnContext *context,
  * Creates a new database.
  *
  * Returns: TRUE on success, FALSE if an error is occurred.
+ *
+ * Since: 1.0.0
  */
 gboolean
 ggrn_context_create_database(GGrnContext *context,
@@ -189,6 +193,8 @@ ggrn_context_create_database(GGrnContext *context,
  *
  * Returns: The executed result of @command. It must be freed with
  *   g_free() when no longer needed.
+ *
+ * Since: 1.0.0
  */
 gchar *
 ggrn_context_execute_command(GGrnContext *context,
@@ -223,6 +229,8 @@ ggrn_context_execute_command(GGrnContext *context,
  * the executed command, use this API.
  *
  * Returns: TRUE on success, FALSE if an error is occurred.
+ *
+ * Since: 1.0.0
  */
 gboolean
 ggrn_context_send_command(GGrnContext  *context,
@@ -246,6 +254,8 @@ ggrn_context_send_command(GGrnContext  *context,
  *
  * Returns: The result of the sent command. It must be freed with
  *   g_free() when no longer needed.
+ *
+ * Since: 1.0.0
  */
 gchar *
 ggrn_context_receive_result(GGrnContext *context)

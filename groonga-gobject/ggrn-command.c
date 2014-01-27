@@ -179,6 +179,8 @@ ggrn_command_class_init(GGrnCommandClass *klass)
  * Allocates a new #GGrnCommand.
  *
  * Returns: a new #GGrnCommand.
+ *
+ * Since: 1.0.0
  */
 GGrnCommand *
 ggrn_command_new(GGrnContext *context, const gchar *name)
@@ -199,6 +201,8 @@ ggrn_command_new(GGrnContext *context, const gchar *name)
  *
  * If you add the same name argument twice, the old argument value is
  * overrode.
+ *
+ * Since: 1.0.0
  */
 void
 ggrn_command_add_argument(GGrnCommand *command,
@@ -217,6 +221,8 @@ ggrn_command_add_argument(GGrnCommand *command,
  *
  * Returns: The executed result of @command. It must be freed with
  *   g_free() when no longer needed.
+ *
+ * Since: 1.0.0
  */
 gchar *
 ggrn_command_execute(GGrnCommand *command)
@@ -257,6 +263,8 @@ to_path_append_argument(gpointer key, gpointer value, gpointer user_data)
  *
  * Returns: The path format command. It must be freed with
  *   g_free() when no longer needed.
+ *
+ * Since: 1.0.0
  */
 gchar *
 ggrn_command_to_path(GGrnCommand *command)
@@ -329,6 +337,8 @@ to_command_line_append_argument(gpointer key, gpointer value, gpointer user_data
  *
  * Returns: The command line format command. It must be freed with
  *   g_free() when no longer needed.
+ *
+ * Since: 1.0.0
  */
 gchar *
 ggrn_command_to_command_line(GGrnCommand *command)

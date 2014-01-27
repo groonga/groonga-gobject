@@ -114,8 +114,8 @@ ggrn_error_to_string(GGrnError error)
     case GGRN_ERROR_TOO_MANY_OPEN_FILES:
         message = "too many open files";
         break;
-    case GGRN_ERROR_INAPPROPRIATE_I_O_CONTROL_OPERATION:
-        message = "inappropriate i o control operation";
+    case GGRN_ERROR_INAPPROPRIATE_IO_CONTROL_OPERATION:
+        message = "inappropriate IO control operation";
         break;
     case GGRN_ERROR_FILE_TOO_LARGE:
         message = "file too large";

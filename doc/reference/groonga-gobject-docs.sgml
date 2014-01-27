@@ -17,6 +17,7 @@
     <chapter id="libgroonga-gobject">
       <title>libgroonga-gobject</title>
       <xi:include href="xml/ggrn-context.xml"/>
+      <xi:include href="xml/ggrn-command.xml"/>
     </chapter>
   </part>
 

@@ -24,7 +24,7 @@
 #include "ggrn-error.h"
 
 gboolean
-_ggrn_rc_check(grn_rc rc, GError **error)
+_ggrn_rc_check(grn_rc rc, const gchar *message, GError **error)
 {
     GGrnError ggrn_error = (GGrnError)rc;
 
@@ -34,8 +34,10 @@ _ggrn_rc_check(grn_rc rc, GError **error)
 
     g_set_error(error, GGRN_ERROR,
                 ggrn_error,
-                "%s (%d)",
+                "%s (%d)%s%s",
                 ggrn_error_to_string(ggrn_error),
-                rc);
+                rc,
+                message ? ": " : "",
+                message ? message : "");
     return FALSE;
 }

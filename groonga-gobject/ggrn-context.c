@@ -126,6 +126,13 @@ _ggrn_context_get_ctx(GGrnContext *context)
     return priv->ctx;
 }
 
+gboolean
+_ggrn_context_check(GGrnContext *context, GError **error)
+{
+    GGrnContextPrivate *priv = GGRN_CONTEXT_GET_PRIVATE(context);
+    return _ggrn_rc_check(priv->ctx->rc, priv->ctx->errbuf, error);
+}
+
 /**
  * ggrn_context_open_database:
  * @context: A #GGrnContext.
@@ -145,7 +152,7 @@ ggrn_context_open_database(GGrnContext *context,
     dispose_database(priv);
 
     grn_db_open(priv->ctx, path);
-    return _ggrn_rc_check(priv->ctx->rc, error);
+    return _ggrn_context_check(context, error);
 }
 
 /**
@@ -168,7 +175,7 @@ ggrn_context_create_database(GGrnContext *context,
     dispose_database(priv);
 
     grn_db_create(priv->ctx, path, NULL);
-    return _ggrn_rc_check(priv->ctx->rc, error);
+    return _ggrn_context_check(context, error);
 }
 
 /**
@@ -228,7 +235,7 @@ ggrn_context_send_command(GGrnContext  *context,
 
     command_length = strlen(command);
     grn_ctx_send(priv->ctx, command, command_length, flags);
-    return _ggrn_rc_check(priv->ctx->rc, error);
+    return _ggrn_context_check(context, error);
 }
 
 /**

@@ -26,7 +26,8 @@
 
 CUT_EXPORT void data_to_path(void);
 CUT_EXPORT void test_to_path(gconstpointer data);
-CUT_EXPORT void test_to_command_line(void);
+CUT_EXPORT void data_to_command_line(void);
+CUT_EXPORT void test_to_command_line(gconstpointer data);
 
 static GGrnContext *context;
 static GGrnCommand *command;
@@ -108,8 +109,47 @@ test_to_path(gconstpointer data)
 }
 
 void
-test_to_command_line(void)
+data_to_command_line(void)
 {
-    cut_assert_equal_string_with_free("select",
+#define ADD_DATA(label, expected, arguments)                            \
+    gcut_add_datum(label,                                               \
+                   "expected", G_TYPE_STRING, expected,                 \
+                   "arguments", G_TYPE_HASH_TABLE, arguments,           \
+                   NULL);
+
+#define ARGUMENTS(argument, ...)                                \
+    gcut_hash_table_string_string_new(argument, __VA_ARGS__)
+
+    ADD_DATA("no arguments",
+             "select",
+             NULL);
+    ADD_DATA("one argument",
+             "select --table \"Users\"",
+             ARGUMENTS("table", "Users",
+                       NULL));
+    ADD_DATA("two or more arguments",
+             "select --table \"Users\" --output_columns \"_key\" --limit \"10\"",
+             ARGUMENTS("table", "Users",
+                       "output_columns", "_key",
+                       "limit", "10",
+                       NULL));
+    ADD_DATA("escape",
+             "select --filter \"(1 + 2 && \\\"string\\\")\"",
+             ARGUMENTS("filter", "(1 + 2 && \"string\")",
+                       NULL));
+
+#undef ARGUMENTS
+
+#undef ADD_DATA
+}
+
+void
+test_to_command_line(gconstpointer data)
+{
+    const gchar *expected;
+
+    expected = gcut_data_get_string(data, "expected");
+    add_arguments((GHashTable *)(gcut_data_get_pointer(data, "arguments")));
+    cut_assert_equal_string_with_free(expected,
                                       ggrn_command_to_command_line(command));
 }

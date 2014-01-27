@@ -283,7 +283,7 @@ to_command_line_append_value(GString *command_line, const gchar *value)
 
     g_string_append_c(command_line, '"');
     value_current = value;
-    while (value_current) {
+    while (*value_current) {
         gsize char_length;
         value_next = g_utf8_next_char(value_current);
         if (value_next) {

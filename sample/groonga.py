@@ -75,7 +75,7 @@ def run(context):
             break
 
 def main():
-    context = Groonga.Context()
+    context = Groonga.Context.new()
     try:
         setup_database(context)
         setup_history()

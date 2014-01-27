@@ -110,6 +110,8 @@ ggrn_context_class_init(GGrnContextClass *klass)
  * Allocates a new #GGrnContext.
  *
  * Returns: a new #GGrnContext.
+ *
+ * Since: 1.0.0
  */
 GGrnContext *
 ggrn_context_new(void)

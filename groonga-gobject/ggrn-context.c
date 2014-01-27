@@ -28,12 +28,12 @@
 #include "ggrn-internal.h"
 
 /**
-* SECTION: ggrn-context
-* @short_description: A context for operating a database.
-*
-* The #GGrnContext is a class to keep all information about database
-* operations.
-*/
+ * SECTION: ggrn-context
+ * @short_description: A context for operating a database.
+ *
+ * The #GGrnContext is a class to keep all information about database
+ * operations.
+ */
 G_DEFINE_TYPE(GGrnContext, ggrn_context, G_TYPE_OBJECT)
 
 #define GGRN_CONTEXT_GET_PRIVATE(obj)                          \

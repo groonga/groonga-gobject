@@ -48,6 +48,7 @@ rm $RPM_BUILD_ROOT%{_libdir}/*.la
 %files
 %{_libdir}/girepository-1.0/*.typelib
 %{_libdir}/libgroonga-gobject.so.*
+%{_datadir}/groonga-gobject/sample/*
 
 %files devel
 %{_libdir}/pkgconfig/groonga-gobject.pc

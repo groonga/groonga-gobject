@@ -14,5 +14,5 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 sampledir = $(pkgdatadir)/sample
-sample_DATA =					\
+dist_sample_DATA =					\
 	groonga.py

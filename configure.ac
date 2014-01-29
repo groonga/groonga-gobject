@@ -102,6 +102,13 @@ fi
 m4_ifdef([AC_CHECK_COVERAGE], [AC_CHECK_COVERAGE])
 GENHTML_OPTIONS="--title 'Groonga GObject Code Coverage'"
 
+AC_ARG_WITH(rsync-path,
+            [AS_HELP_STRING([--with-rsync-path=PATH],
+            [specify rsync path to upload groonga gobject packages.])],
+            [RSYNC_PATH="$withval"],
+            [RSYNC_PATH="packages@packages.groonga.org:public"])
+AC_SUBST(RSYNC_PATH)
+
 AC_CONFIG_FILES([
   groonga-gobject.pc
   Makefile

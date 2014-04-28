@@ -8,6 +8,7 @@ Makefile
 *.lo
 *.la
 *.bak
+/*.tar.gz
 /aclocal.m4
 /autom4te.cache/
 /config.h.in
@@ -38,4 +39,6 @@ Makefile
 /doc/reference/groonga-gobject.prerequisites
 /doc/reference/groonga-gobject.signals
 /doc/reference/groonga-gobject.types
+/packages/*.tar.gz
 /packages/rpm/fedora/*.spec
+/packages/ubuntu/tmp/

@@ -109,6 +109,29 @@ AC_ARG_WITH(rsync-path,
             [RSYNC_PATH="packages@packages.groonga.org:public"])
 AC_SUBST(RSYNC_PATH)
 
+AC_ARG_WITH(launchpad-uploader-pgp-key,
+            [AS_HELP_STRING([--with-launchpad-uploader-pgp-key=KEY],
+            [specify PGP key UID to upload Groonga packages to Launchpad.])],
+            [LAUNCHPAD_UPLOADER_PGP_KEY="$withval"],
+            [LAUNCHPAD_UPLOADER_PGP_KEY=""])
+AC_SUBST(LAUNCHPAD_UPLOADER_PGP_KEY)
+
+AC_ARG_WITH([groonga-source-path],
+            AS_HELP_STRING([--with-groonga-source-path=PATH],
+                           [Specify Groonga source path for
+			    groonga-normalizer-mysql's release manager.]),
+			   [GROONGA_SOURCE_PATH="$withval"])
+case "$GROONGA_SOURCE_PATH" in
+  ""|/*)
+    : # do nothing
+    ;;
+  *)
+    GROONGA_SOURCE_PATH="\$(top_builddir)/${GROONGA_SOURCE_PATH}"
+    ;;
+esac
+AC_SUBST(GROONGA_SOURCE_PATH)
+
+
 AC_CONFIG_FILES([
   groonga-gobject.pc
   Makefile
@@ -120,6 +143,7 @@ AC_CONFIG_FILES([
   sample/Makefile
   packages/Makefile
   packages/apt/Makefile
+  packages/ubuntu/Makefile
   packages/yum/Makefile
   packages/rpm/Makefile
   packages/rpm/fedora/Makefile

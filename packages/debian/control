@@ -5,6 +5,7 @@ Maintainer: Groonga Project <packages@groonga.org>
 Build-Depends:
   debhelper (>= 9),
   autotools-dev,
+  pkg-config,
   libgroonga-dev (>= 3.1.0)
 Standards-Version: 3.9.3
 Homepage: https://github.com/groonga/groonga-gobject

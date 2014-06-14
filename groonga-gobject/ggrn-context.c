@@ -152,11 +152,16 @@ ggrn_context_open_database(GGrnContext *context,
                            const gchar *path, GError **error)
 {
     GGrnContextPrivate *priv = GGRN_CONTEXT_GET_PRIVATE(context);
+    gboolean success;
 
     dispose_database(priv);
 
     grn_db_open(priv->ctx, path);
-    return _ggrn_context_check(context, error);
+    success = _ggrn_context_check(context, error);
+    if (success) {
+        priv->own_database = TRUE;
+    }
+    return success;
 }
 
 /**
@@ -177,11 +182,16 @@ ggrn_context_create_database(GGrnContext *context,
                              const gchar *path, GError **error)
 {
     GGrnContextPrivate *priv = GGRN_CONTEXT_GET_PRIVATE(context);
+    gboolean success;
 
     dispose_database(priv);
 
     grn_db_create(priv->ctx, path, NULL);
-    return _ggrn_context_check(context, error);
+    success = _ggrn_context_check(context, error);
+    if (success) {
+        priv->own_database = TRUE;
+    }
+    return success;
 }
 
 /**

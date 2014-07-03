@@ -119,7 +119,7 @@ AC_SUBST(LAUNCHPAD_UPLOADER_PGP_KEY)
 AC_ARG_WITH([groonga-source-path],
             AS_HELP_STRING([--with-groonga-source-path=PATH],
                            [Specify Groonga source path for
-			    groonga-normalizer-mysql's release manager.]),
+			    Groonga GObject's release manager.]),
 			   [GROONGA_SOURCE_PATH="$withval"])
 case "$GROONGA_SOURCE_PATH" in
   ""|/*)

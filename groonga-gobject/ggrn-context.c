@@ -139,7 +139,7 @@ _ggrn_context_check(GGrnContext *context, GError **error)
  * ggrn_context_open_database:
  * @context: A #GGrnContext.
  * @path: The path of the database to be opened.
- * @error: return location for a GError, or %NULL.
+ * @error: Return location for a GError, or %NULL.
  *
  * Opens a database.
  *
@@ -169,7 +169,7 @@ ggrn_context_open_database(GGrnContext *context,
  * @context: A #GGrnContext.
  * @path: (allow-none): The path of the database to be created, or %NULL
  *   for temporary database.
- * @error: return location for a GError, or %NULL.
+ * @error: Return location for a GError, or %NULL.
  *
  * Creates a new database.
  *

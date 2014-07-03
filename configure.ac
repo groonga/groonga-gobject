@@ -161,6 +161,7 @@ AC_CONFIG_FILES([
   packages/apt/Makefile
   packages/ubuntu/Makefile
   packages/yum/Makefile
+  packages/yum/env.sh
   packages/rpm/Makefile
   packages/rpm/fedora/Makefile
   packages/rpm/fedora/groonga-gobject.spec

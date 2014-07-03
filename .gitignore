@@ -43,5 +43,9 @@ Makefile
 /packages/rpm/fedora/*.spec
 /packages/ubuntu/tmp/
 /packages/apt/repositories/
+/packages/apt/tmp/
 /packages/yum/repositories/
+/packages/yum/.vagrant/
+/packages/yum/tmp/
+/packages/yum/env.sh
 /packages/source/files/

@@ -1,6 +1,5 @@
 REPOSITORIES_PATH = repositories
 DISTRIBUTIONS = fedora
-ARCHITECTURES = i386 x86_64
 CHROOT_BASE = /var/lib/chroot
 BASE_URL_PREFIX = http://packages.groonga.org
 HAVE_DEVELOPMENT_BRANCH = no
@@ -38,21 +37,9 @@ download: ensure-rsync-path
 	     $(REPOSITORIES_PATH)/$${distribution};	\
 	done
 
-build: build-in-chroot
-
-build-in-chroot: source
-	./build-in-chroot.sh			\
-	  $(PACKAGE)				\
-	  $(VERSION)				\
-	  $(top_builddir)/$(PACKAGE)		\
-	  ../rpm				\
-	  $(REPOSITORIES_PATH)/			\
-	  $(CHROOT_BASE)			\
-	  '$(ARCHITECTURES)'			\
-	  '$(DISTRIBUTIONS)'			\
-	  '$(HAVE_DEVELOPMENT_BRANCH)'		\
-	  '$(USE_RPMFORGE)'			\
-	  '$(USE_ATRPMS)'
+build: source specs
+	vagrant up
+	vagrant destroy --force
 
 ensure-public-key:
 	gpg --list-keys '$(GPG_UID)' > /dev/null ||			\
@@ -61,10 +48,17 @@ ensure-public-key:
 RPM-GPG-KEY-$(PACKAGE): ensure-public-key
 	gpg --armor --export '$(GPG_UID)' > $@
 
-source: ../$(PACKAGE)-$(VERSION).tar.gz
+source: tmp/$(PACKAGE)-$(VERSION).tar.gz
 
-../$(PACKAGE)-$(VERSION).tar.gz: $(abs_top_builddir)/$(PACKAGE)-$(VERSION).tar.gz
-	ln -s $(abs_top_builddir)/$(PACKAGE)-$(VERSION).tar.gz ../
+tmp/$(PACKAGE)-$(VERSION).tar.gz: $(abs_top_builddir)/$(PACKAGE)-$(VERSION).tar.gz
+	cp $(abs_top_builddir)/$(PACKAGE)-$(VERSION).tar.gz tmp/
 
 $(abs_top_builddir)/$(PACKAGE)-$(VERSION).tar.gz:
 	cd $(abs_top_builddir) && $(MAKE) dist
+
+specs: tmp/fedora/$(PACKAGE).spec
+
+tmp/fedora/$(PACKAGE).spec: $(builddir)/../rpm/fedora/$(PACKAGE).spec
+	mkdir -p tmp/fedora
+	cp $(builddir)/../rpm/fedora/$(PACKAGE).spec tmp/fedora/
+

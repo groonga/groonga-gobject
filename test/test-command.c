@@ -24,6 +24,8 @@
 
 #include <gcutter.h>
 
+CUT_EXPORT void test_escape(void);
+CUT_EXPORT void test_escape_query(void);
 CUT_EXPORT void data_to_path(void);
 CUT_EXPORT void test_to_path(gconstpointer data);
 CUT_EXPORT void data_to_command_line(void);
@@ -60,6 +62,30 @@ add_arguments(GHashTable *arguments)
     }
 
     g_hash_table_foreach(arguments, add_argument, NULL);
+}
+
+void
+test_escape(void)
+{
+    gchar *escaped;
+
+    escaped = ggrn_command_escape(command,
+                                  "aA'\"()19",
+                                  "'\"()",
+                                  '\\');
+    cut_assert_equal_string_with_free("aA\\'\\\"\\(\\)19",
+                                      escaped);
+}
+
+void
+test_escape_query(void)
+{
+    gchar *escaped_query;
+
+    escaped_query = ggrn_command_escape_query(command,
+                                              "column:aA'\"()19");
+    cut_assert_equal_string_with_free("column\\:aA'\\\"\\(\\)19",
+                                      escaped_query);
 }
 
 void

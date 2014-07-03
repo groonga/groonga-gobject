@@ -216,6 +216,117 @@ ggrn_command_add_argument(GGrnCommand *command,
 }
 
 /**
+ * ggrn_command_escape:
+ * @command: A #GGrnCommand.
+ * @value: The argument value.
+ * @target_characters: The characters to be escaped.
+ * @escape_character: The character to escape a character.
+ *
+ * Escapes @target_characters in @value by @escape_chracter.
+ *
+ * For example:
+ * |[
+ * gchar *escaped;
+ * escaped = ggrn_command_escape(command,
+ *                               "aA'\"()19",
+ *                               "'\"()",
+ *                               '\\');
+ * g_print("%s\n", escaped); // -> aA\'\"\(\)19
+ * g_free(escaped);
+ * ]|
+ *
+ * Returns: The escaped characters. It must be freed with
+ *   g_free() when no longer needed.
+ *
+ *   It returns %NULL for invalid input.
+ *
+ * Since: 1.0.1
+ */
+gchar *
+ggrn_command_escape(GGrnCommand *command,
+                    const gchar *value,
+                    const gchar *target_characters,
+                    char         escape_character)
+{
+    GGrnCommandPrivate *priv = GGRN_COMMAND_GET_PRIVATE(command);
+    grn_ctx *ctx;
+    grn_obj escaped_string;
+    gchar *escaped_value;
+    grn_rc rc;
+
+    ctx = _ggrn_context_get_ctx(priv->context);
+    GRN_TEXT_INIT(&escaped_string, 0);
+    rc = grn_expr_syntax_escape(ctx,
+                                value,
+                                strlen(value),
+                                target_characters,
+                                escape_character,
+                                &escaped_string);
+    if (rc != GRN_SUCCESS) {
+        GRN_OBJ_FIN(ctx, &escaped_string);
+        return NULL;
+    }
+
+    escaped_value = g_strndup(GRN_TEXT_VALUE(&escaped_string),
+                              GRN_TEXT_LEN(&escaped_string));
+    GRN_OBJ_FIN(ctx, &escaped_string);
+
+    return escaped_value;
+}
+
+/**
+ * ggrn_command_escape_query:
+ * @command: A #GGrnCommand.
+ * @query: The query argument value.
+ *
+ * Escapes [special characters of query
+ * syntax](http://groonga.org/docs/reference/grn_expr/query_syntax.html#escape)
+ * in @query.
+ *
+ * For example:
+ *
+ * |[
+ * gchar *escaped_query;
+ * escaped_query = ggrn_command_escape_query(command, "column:aA'\"()19");
+ * g_print("%s\n", escaped_query); // -> column\:aA'\"\(\)19
+ * g_free(escaped_query);
+ * ]|
+ *
+ * Returns: The escaped query. It must be freed with
+ *   g_free() when no longer needed.
+ *
+ *   It returns %NULL for invalid input.
+ *
+ * Since: 1.0.1
+ */
+gchar *
+ggrn_command_escape_query(GGrnCommand *command, const gchar *query)
+{
+    GGrnCommandPrivate *priv = GGRN_COMMAND_GET_PRIVATE(command);
+    grn_ctx *ctx;
+    grn_obj escaped_string;
+    gchar *escaped_value;
+    grn_rc rc;
+
+    ctx = _ggrn_context_get_ctx(priv->context);
+    GRN_TEXT_INIT(&escaped_string, 0);
+    rc = grn_expr_syntax_escape_query(ctx,
+                                      query,
+                                      strlen(query),
+                                      &escaped_string);
+    if (rc != GRN_SUCCESS) {
+        GRN_OBJ_FIN(ctx, &escaped_string);
+        return NULL;
+    }
+
+    escaped_value = g_strndup(GRN_TEXT_VALUE(&escaped_string),
+                              GRN_TEXT_LEN(&escaped_string));
+    GRN_OBJ_FIN(ctx, &escaped_string);
+
+    return escaped_value;
+}
+
+/**
  * ggrn_command_execute:
  * @command: A #GGrnCommand.
  *

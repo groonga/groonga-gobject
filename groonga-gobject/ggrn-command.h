@@ -62,6 +62,12 @@ GGrnCommand         *ggrn_command_new               (GGrnContext *context,
 void                 ggrn_command_add_argument      (GGrnCommand *command,
                                                      const gchar *name,
                                                      const gchar *value);
+gchar               *ggrn_command_escape            (GGrnCommand *command,
+                                                     const gchar *value,
+                                                     const gchar *target_characters,
+                                                     char         escape_character);
+gchar               *ggrn_command_escape_query      (GGrnCommand *command,
+                                                     const gchar *query);
 gchar               *ggrn_command_execute           (GGrnCommand *command);
 gchar               *ggrn_command_to_path           (GGrnCommand *command);
 gchar               *ggrn_command_to_command_line   (GGrnCommand *command);

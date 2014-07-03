@@ -232,6 +232,7 @@ ggrn_context_execute_command(GGrnContext *context,
  * @command:
  *   The Groonga command to be sent. See
  *   http://groonga.org/docs/reference/command.html about Groonga command.
+ * @error: Return location for a GError, or %NULL.
  *
  * Sends a Groonga command. Use ggrn_context_receive_result() to
  * receive the result of the sent command.

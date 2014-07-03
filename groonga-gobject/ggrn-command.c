@@ -175,6 +175,8 @@ ggrn_command_class_init(GGrnCommandClass *klass)
 
 /**
  * ggrn_command_new:
+ * @context: A #GGrnContext.
+ * @name: The command name.
  *
  * Allocates a new #GGrnCommand.
  *

@@ -28,5 +28,8 @@ SUBDIRS =					\
 pkgconfigdir = $(libdir)/pkgconfig
 pkgconfig_DATA = groonga-gobject.pc
 
+tag:
+	cd $(top_srcdir) && git tag v$(VERSION) -a -m 'Groonga GObject $(VERSION)!!!'
+
 echo-cutter:
 	@echo $(CUTTER)

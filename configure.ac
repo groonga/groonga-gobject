@@ -131,6 +131,21 @@ case "$GROONGA_SOURCE_PATH" in
 esac
 AC_SUBST(GROONGA_SOURCE_PATH)
 
+AC_ARG_WITH([cutter-source-path],
+            AS_HELP_STRING([--with-cutter-source-path=PATH],
+                           [Specify Cutter source path for
+			    Groonga GObject's release manager.]),
+			   [CUTTER_SOURCE_PATH="$withval"])
+case "$CUTTER_SOURCE_PATH" in
+  ""|/*)
+    : # do nothing
+    ;;
+  *)
+    CUTTER_SOURCE_PATH="\$(top_builddir)/${CUTTER_SOURCE_PATH}"
+    ;;
+esac
+AC_SUBST(CUTTER_SOURCE_PATH)
+
 
 AC_CONFIG_FILES([
   groonga-gobject.pc

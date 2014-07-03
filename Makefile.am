@@ -33,3 +33,28 @@ tag:
 
 echo-cutter:
 	@echo $(CUTTER)
+
+update-latest-release:
+	@if test -z "$(CUTTER_SOURCE_PATH)"; then			\
+	  echo "\$$(CUTTER_SOURCE_PATH) is missing.";			\
+	  echo "Pass --cutter-source-path option to configure.";	\
+	  exit 1;							\
+	fi
+	@if test -z "$(OLD_RELEASE)"; then	\
+	  echo "\$$(OLD_RELEASE) is missing";	\
+	  exit 1;				\
+	fi
+	@if test -z "$(OLD_RELEASE_DATE)"; then		\
+	  echo "\$$(OLD_RELEASE_DATE) is missing";	\
+	  exit 1;					\
+	fi
+	@if test -z "$(NEW_RELEASE_DATE)"; then		\
+	  echo "\$$(NEW_RELEASE_DATE) is missing";	\
+	  exit 1;					\
+	fi
+	cd $(top_srcdir) &&					\
+	  $(CUTTER_SOURCE_PATH)/misc/update-latest-release.rb	\
+	  $(PACKAGE) $(OLD_RELEASE) $(OLD_RELEASE_DATE)		\
+	  $(VERSION) $(NEW_RELEASE_DATE)			\
+	  packages/rpm/fedora/groonga-gobject.spec.in		\
+	  packages/debian/changelog

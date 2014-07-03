@@ -42,3 +42,6 @@ Makefile
 /packages/*.tar.gz
 /packages/rpm/fedora/*.spec
 /packages/ubuntu/tmp/
+/packages/apt/repositories/
+/packages/yum/repositories/
+/packages/source/files/

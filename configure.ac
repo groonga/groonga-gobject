@@ -15,7 +15,7 @@
 
 AC_PREREQ(2.59)
 
-AC_INIT(groonga-gobject, [1.0.1],
+AC_INIT(groonga-gobject, [1.0.2],
         groonga-talk@lists.sourceforge.net)
 AC_CONFIG_AUX_DIR([config])
 AC_CONFIG_MACRO_DIR([m4])

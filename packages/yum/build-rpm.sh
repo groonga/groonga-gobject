@@ -37,5 +37,7 @@ run cp /vagrant/tmp/${distribution}/${PACKAGE}.spec rpmbuild/SPECS/
 run rpmbuild -ba ${rpmbuild_options} rpmbuild/SPECS/${PACKAGE}.spec
 
 repository="/vagrant/repositories/${distribution}/${distribution_version}"
+run mkdir -p ${repository}/$(arch)/Packages/
 run cp rpmbuild/RPMS/$(arch)/* ${repository}/$(arch)/Packages/
+run mkdir -p ${repository}/source/SRPMS/
 run cp rpmbuild/SRPMS/* ${repository}/source/SRPMS/

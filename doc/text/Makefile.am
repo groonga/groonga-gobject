@@ -1,4 +1,4 @@
-# Copyright (C) 2013-2014  Kouhei Sutou <kou@clear-code.com>
+# Copyright (C) 2014  Kouhei Sutou <kou@clear-code.com>
 #
 # This library is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Lesser General Public License as published by
@@ -13,6 +13,7 @@
 # You should have received a copy of the GNU Lesser General Public License
 # along with this library.  If not, see <http://www.gnu.org/licenses/>.
 
-SUBDIRS =					\
-	text					\
-	reference
+# TODO: Integrated with GTK-Doc.
+
+dist_doc_DATA =					\
+	news.md

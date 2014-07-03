@@ -138,6 +138,7 @@ AC_CONFIG_FILES([
   groonga-gobject/Makefile
   test/Makefile
   doc/Makefile
+  doc/text/Makefile
   doc/reference/Makefile
   doc/reference/version.xml
   sample/Makefile

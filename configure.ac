@@ -146,6 +146,8 @@ case "$CUTTER_SOURCE_PATH" in
 esac
 AC_SUBST(CUTTER_SOURCE_PATH)
 
+GPG_UID=m4_include(gpg_uid)
+AC_SUBST(GPG_UID)
 
 AC_CONFIG_FILES([
   groonga-gobject.pc

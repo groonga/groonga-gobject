@@ -58,6 +58,8 @@ rm $RPM_BUILD_ROOT%{_libdir}/*.la
 %files doc
 %dir %{_datadir}/gtk-doc/html/groonga-gobject
 %{_datadir}/gtk-doc/html/groonga-gobject/*
+%dir %{_datadir}/doc/groonga-gobject
+%{_datadir}/doc/groonga-gobject/*
 
 %changelog
 * Thu Jul 03 2014 Kouhei Sutou <kou@cozmixng.org> - 1.0.1-1

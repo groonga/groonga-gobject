@@ -48,4 +48,5 @@ Makefile
 /packages/yum/.vagrant/
 /packages/yum/tmp/
 /packages/yum/env.sh
+packages/yum/RPM-GPG-KEY-groonga-gobject
 /packages/source/files/

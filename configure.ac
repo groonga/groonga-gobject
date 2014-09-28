@@ -161,6 +161,7 @@ AC_CONFIG_FILES([
   sample/Makefile
   packages/Makefile
   packages/apt/Makefile
+  packages/apt/env.sh
   packages/ubuntu/Makefile
   packages/yum/Makefile
   packages/yum/env.sh

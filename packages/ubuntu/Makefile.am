@@ -1,4 +1,4 @@
-CODE_NAMES = saucy,trusty
+CODE_NAMES = trusty,utopic
 SOURCE = ../$(PACKAGE)-$(VERSION).tar.gz
 
 all:
